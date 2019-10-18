@@ -19,6 +19,7 @@ public class AddItem extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/json");
         String desc = new ObjectMapper().readTree(this.getRequestData(req)).get("desc").asText();
         Item add = this.storage.add(new Item(desc, new Date()));
         resp.getWriter().println(new ObjectMapper().writeValueAsString(add));

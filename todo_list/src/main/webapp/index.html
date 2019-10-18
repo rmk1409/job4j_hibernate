@@ -47,17 +47,14 @@
                 "./add"
                 , JSON.stringify({desc: $("#task").val()})
                 , function (data) {
-                    for (let i in data) {
-                        let cur = data[i];
-                        let checked = cur.done ? "checked" : "";
-                        let disabled = cur.done ? "disabled" : "";
-                        $("tbody").append(
-                            "<tr>" +
-                            "<td>" + data.desc + "</td>" +
-                            "<td><div class=\"form-check\"><input type=\"checkbox\" class=\"form-check-input\"" + checked + " " + disabled + "></div></td>" +
-                            "</tr>"
-                        );
-                    }
+                    let checked = data.done ? "checked" : "";
+                    let disabled = data.done ? "disabled" : "";
+                    $("tbody").append(
+                        "<tr>" +
+                        "<td>" + data.desc + "</td>" +
+                        "<td><div class=\"form-check\"><input type=\"checkbox\" class=\"form-check-input\"" + checked + " " + disabled + "></div></td>" +
+                        "</tr>"
+                    );
                 }
             );
         }
@@ -71,7 +68,7 @@
             <label for="task" class="sr-only">Description</label>
             <input type="text" class="form-control" id="task" placeholder="Enter description">
         </div>
-        <button type="submit" class="btn btn-primary" onclick="addNewTask()">Submit</button>
+        <button type="button" class="btn btn-primary" onclick="addNewTask()">Submit</button>
     </form>
     <hr>
     <div class="form-check">
